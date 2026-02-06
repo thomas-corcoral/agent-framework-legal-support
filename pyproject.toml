@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "legal-support"
 version = "0.1.0"
-description = "Swiss Legala support Agents"
+description = "Swiss Legal support Agents"
 authors = [{ name = "Contributors", email = "contributors@example.com" }]
 readme = "README.md"
 license = { text = "Apache-2.0" }
@@ -31,6 +31,8 @@ keywords = [
     "rag",
     "fine-tuning",
     "nlp",
+    "swiss-law",
+    "semantic-search",
 ]
 
 dependencies = [
@@ -41,6 +43,20 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# Vector search dependencies for semantic_case_search
+vector = [
+    "sentence-transformers>=2.2.0",
+    "faiss-cpu>=1.7.0",
+    "numpy>=1.24.0",
+    "huggingface-hub>=0.20.0",
+]
+# GPU-accelerated vector search (for building large indexes)
+vector-gpu = [
+    "sentence-transformers>=2.2.0",
+    "faiss-gpu>=1.7.0",
+    "numpy>=1.24.0",
+    "huggingface-hub>=0.20.0",
+]
 dev = [
     "pytest>=8.0.0",
     "pytest-cov>=4.0.0",
@@ -54,6 +70,10 @@ docs = [
     "mkdocs>=1.5.0",
     "mkdocs-material>=9.5.0",
     "mkdocstrings[python]>=0.24.0",
+]
+# Full installation with all features
+all = [
+    "legal-support[vector,dev,docs]",
 ]
 
 [project.urls]
@@ -131,7 +151,7 @@ show_error_codes = true
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
-module = ["langchain.*", "langchain_openai.*", "langchain_anthropic.*", "langchain_google_genai.*"]
+module = ["langchain.*", "langchain_openai.*", "langchain_anthropic.*", "langchain_google_genai.*", "sentence_transformers.*", "faiss.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
@@ -149,6 +169,7 @@ addopts = [
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: marks tests as integration tests",
+    "vector: marks tests requiring vector dependencies",
 ]
 
 [tool.coverage.run]

@@ -19,7 +19,7 @@ from typing import Annotated
 from pydantic import BaseModel, Field
 
 
-class ProceedingType(str, Enum):
+class ProceedingType(Enum):
     """Types of legal proceedings in Switzerland."""
 
     CIVIL = "civil"
@@ -33,7 +33,7 @@ class ProceedingType(str, Enum):
     MEDIATION = "mediation"
 
 
-class CourtLevel(str, Enum):
+class CourtLevel(Enum):
     """Court levels in the Swiss judicial system."""
 
     CONCILIATION = "conciliation"  # Schlichtungsbehörde
@@ -42,7 +42,7 @@ class CourtLevel(str, Enum):
     FEDERAL_COURT = "federal_court"  # Bundesgericht
 
 
-class Canton(str, Enum):
+class Canton(Enum):
     """Swiss cantons for fee schedule lookup."""
 
     ZH = "ZH"  # Zurich
@@ -120,6 +120,17 @@ class CostEstimationResult(BaseModel):
 # These are approximations - actual fees vary by canton and case specifics
 
 
+def _get_conciliation_value(value_in_dispute):
+    if value_in_dispute <= 2000:
+        return 0
+    elif value_in_dispute <= 10000:
+        return 150
+    elif value_in_dispute <= 30000:
+        return 300
+    else:
+        return 500
+
+
 def _calculate_civil_court_fees(value_in_dispute: float, court_level: CourtLevel) -> float:
     """Calculate civil court fees based on value in dispute.
 
@@ -128,14 +139,7 @@ def _calculate_civil_court_fees(value_in_dispute: float, court_level: CourtLevel
     """
     if court_level == CourtLevel.CONCILIATION:
         # Schlichtungsbehörde: typically free or very low fees
-        if value_in_dispute <= 2000:
-            return 0
-        elif value_in_dispute <= 10000:
-            return 150
-        elif value_in_dispute <= 30000:
-            return 300
-        else:
-            return 500
+        return _get_conciliation_value(value_in_dispute)
 
     # First instance and appeal courts use progressive scales
     base_fees = {
@@ -146,10 +150,8 @@ def _calculate_civil_court_fees(value_in_dispute: float, court_level: CourtLevel
     multiplier = base_fees.get(court_level, 1.0)
 
     # Progressive fee calculation (simplified Swiss model)
-    if value_in_dispute <= 1000:
-        base = 200
-    elif value_in_dispute <= 2000:
-        base = 300
+    if value_in_dispute <= 2000:
+        base = 250
     elif value_in_dispute <= 5000:
         base = 500
     elif value_in_dispute <= 10000:
@@ -263,7 +265,7 @@ def _calculate_criminal_fees() -> float:
     return 0  # Prosecution costs are borne by the state; defendant may have attorney fees
 
 
-def estimate_costs(
+def estimate_costs(  # noqa: PLR0912
     proceeding_type: Annotated[ProceedingType, Field(description="Type of legal proceeding")],
     value_in_dispute: Annotated[
         float, Field(ge=0, description="Value in dispute (Streitwert) in CHF")

@@ -13,7 +13,7 @@ from langdetect import LangDetectException, detect, detect_langs
 from pydantic import BaseModel, Field
 
 
-class SupportedLanguage(str, Enum):
+class SupportedLanguage(Enum):
     """Supported languages for Swiss Legal Support.
 
     Switzerland has four national languages. We support the three main ones

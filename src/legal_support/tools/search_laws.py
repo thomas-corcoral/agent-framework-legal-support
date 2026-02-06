@@ -9,8 +9,9 @@ including the Federal Constitution, federal acts, ordinances, and international 
 
 from __future__ import annotations
 
+import asyncio
 import logging
-from datetime import date
+from datetime import date, datetime
 from enum import Enum
 from typing import Annotated
 
@@ -20,7 +21,7 @@ from pydantic import BaseModel, Field
 logger = logging.getLogger(__name__)
 
 
-class LegalDomain(str, Enum):
+class LegalDomain(Enum):
     """Legal domains in Swiss law (based on SR classification).
 
     The Systematic Compilation (SR - Systematische Rechtssammlung) organizes
@@ -40,7 +41,7 @@ class LegalDomain(str, Enum):
     ALL = "all"  # Search across all domains
 
 
-class LawType(str, Enum):
+class LawType(Enum):
     """Types of Swiss legal documents."""
 
     FEDERAL_ACT = "federal_act"  # Bundesgesetz (BG)
@@ -51,7 +52,7 @@ class LawType(str, Enum):
     ALL = "all"  # All types
 
 
-class Language(str, Enum):
+class Language(Enum):
     """Languages for law search results."""
 
     GERMAN = "de"
@@ -164,7 +165,7 @@ class FedlexAPIError(Exception):
 def _build_sparql_query(
     search_term: str,
     domain: LegalDomain,
-    law_type: LawType,
+    law_type: LawType,  # noqa: ARG001
     language: Language,
     limit: int,
 ) -> str:
@@ -211,7 +212,7 @@ def _build_sparql_query(
 
 def _parse_fedlex_response(
     response_data: dict,
-    search_term: str,
+    search_term: str,  # noqa: ARG001
     language: Language,
 ) -> list[LawEntry]:
     """Parse the Fedlex SPARQL response into LawEntry objects."""
@@ -229,16 +230,16 @@ def _parse_fedlex_response(
         entry_into_force = None
 
         if "dateDocument" in binding:
-            try:
-                enactment_date = date.fromisoformat(binding["dateDocument"]["value"][:10])
-            except (ValueError, KeyError):
-                pass
+            import contextlib
+
+            contextlib.suppress(ValueError, KeyError)
+            enactment_date = date.fromisoformat(binding["dateDocument"]["value"][:10])
 
         if "dateEntryInForce" in binding:
-            try:
-                entry_into_force = date.fromisoformat(binding["dateEntryInForce"]["value"][:10])
-            except (ValueError, KeyError):
-                pass
+            import contextlib
+
+            contextlib.suppress(ValueError, KeyError)
+            entry_into_force = date.fromisoformat(binding["dateEntryInForce"]["value"][:10])
 
         # Build Fedlex URL
         fedlex_url = f"{FEDLEX_WEB_BASE}/{sr_number}/{language.value}"
@@ -570,9 +571,8 @@ def _search_mock_data(
         # Check if query matches any keywords
         if any(kw in query_lower for kw in law["keywords"]) or query_lower in law["title"].lower():
             # Apply domain filter
-            if domain != LegalDomain.ALL:
-                if not law["sr_number"].startswith(domain.value):
-                    continue
+            if domain != LegalDomain.ALL and not law["sr_number"].startswith(domain.value):
+                continue
 
             entry = LawEntry(
                 sr_number=law["sr_number"],
@@ -608,7 +608,7 @@ async def search_laws_async(
     limit: Annotated[
         int, Field(ge=1, le=50, description="Maximum number of results to return")
     ] = 10,
-    include_articles: Annotated[
+    include_articles: Annotated[  # noqa: ARG001
         bool, Field(description="Whether to include relevant article excerpts")
     ] = False,
     use_mock: Annotated[
@@ -648,7 +648,6 @@ async def search_laws_async(
         ...     language=Language.GERMAN,
         ... )
     """
-    from datetime import datetime
 
     if not query or not query.strip():
         raise ValueError("Search query cannot be empty")
@@ -773,7 +772,6 @@ def search_laws(
         ...     language=Language.GERMAN,
         ... )
     """
-    import asyncio
 
     # Run the async version synchronously using asyncio.run()
     # This is the recommended approach for Python 3.7+
@@ -790,7 +788,7 @@ def search_laws(
     )
 
 
-def _generate_suggestions(query: str, domain: LegalDomain) -> list[str]:
+def _generate_suggestions(query: str, domain: LegalDomain) -> list[str]:  # noqa: ARG001
     """Generate search suggestions when no results are found."""
     suggestions = []
 

@@ -1,0 +1,212 @@
+{
+    "description": "Sample BGER (Swiss Federal Court) cases for testing semantic search",
+    "version": "1.0.0",
+    "cases": [
+        {
+            "case_id": "BGE 147 III 451",
+            "title": "Mietvertrag; Zahlungsverzug des Mieters; Kündigungsfrist",
+            "legal_area": "civil",
+            "chamber": "I_civil",
+            "decision_date": "2021-09-15",
+            "language": "de",
+            "regeste": "Art. 257d OR. Kündigung wegen Zahlungsverzugs. Die Frist zur Nachzahlung des Mietzinses beginnt mit dem Empfang der schriftlichen Mahnung des Vermieters zu laufen. Eine mündliche Mahnung genügt nicht.",
+            "keywords": [
+                "Mietrecht",
+                "Zahlungsverzug",
+                "Kündigung",
+                "Mahnung",
+                "Mietzins"
+            ],
+            "cited_laws": [
+                "OR 257d",
+                "OR 266a",
+                "OR 266l"
+            ],
+            "bger_url": "https://www.bger.ch/ext/eurospider/live/de/php/clir/http/index.php?highlight_docid=atf%3A%2F%2F147-III-451"
+        },
+        {
+            "case_id": "BGE 146 III 203",
+            "title": "Arbeitsvertrag; fristlose Kündigung; wichtiger Grund",
+            "legal_area": "civil",
+            "chamber": "I_civil",
+            "decision_date": "2020-06-22",
+            "language": "de",
+            "regeste": "Art. 337 OR. Fristlose Entlassung wegen Treuepflichtverletzung. Ein einmaliger schwerer Verstoss gegen die Treuepflicht kann die fristlose Kündigung rechtfertigen, wenn er das Vertrauensverhältnis zwischen Arbeitgeber und Arbeitnehmer unwiederbringlich zerstört.",
+            "keywords": [
+                "Arbeitsrecht",
+                "fristlose Kündigung",
+                "Treuepflicht",
+                "wichtiger Grund"
+            ],
+            "cited_laws": [
+                "OR 337",
+                "OR 321a",
+                "OR 328"
+            ],
+            "bger_url": "https://www.bger.ch/ext/eurospider/live/de/php/clir/http/index.php?highlight_docid=atf%3A%2F%2F146-III-203"
+        },
+        {
+            "case_id": "BGE 145 IV 154",
+            "title": "Strafrecht; Betrug; Arglist",
+            "legal_area": "criminal",
+            "chamber": "criminal",
+            "decision_date": "2019-03-28",
+            "language": "de",
+            "regeste": "Art. 146 StGB. Betrug. Arglist liegt vor, wenn der Täter ein ganzes Lügengebäude errichtet oder sich besonderer Machenschaften bedient. Die blosse Lüge genügt nicht.",
+            "keywords": [
+                "Betrug",
+                "Arglist",
+                "Täuschung",
+                "Vermögensschaden"
+            ],
+            "cited_laws": [
+                "StGB 146",
+                "StGB 22"
+            ],
+            "bger_url": "https://www.bger.ch/ext/eurospider/live/de/php/clir/http/index.php?highlight_docid=atf%3A%2F%2F145-IV-154"
+        },
+        {
+            "case_id": "BGE 144 II 233",
+            "title": "Öffentliches Recht; Baubewilligung; Nachbarrecht",
+            "legal_area": "public",
+            "chamber": "I_public",
+            "decision_date": "2018-07-12",
+            "language": "de",
+            "regeste": "Art. 22 RPG. Baubewilligung in der Bauzone. Das Nachbarrecht gewährt dem Nachbarn keinen Anspruch auf Aufrechterhaltung der bestehenden Situation, sondern nur auf Einhaltung der öffentlich-rechtlichen Bauvorschriften.",
+            "keywords": [
+                "Baurecht",
+                "Baubewilligung",
+                "Nachbarrecht",
+                "Raumplanung"
+            ],
+            "cited_laws": [
+                "RPG 22",
+                "RPG 24"
+            ],
+            "bger_url": "https://www.bger.ch/ext/eurospider/live/de/php/clir/http/index.php?highlight_docid=atf%3A%2F%2F144-II-233"
+        },
+        {
+            "case_id": "BGE 143 V 295",
+            "title": "Sozialversicherungsrecht; Invalidenversicherung; Arbeitsunfähigkeit",
+            "legal_area": "social_insurance",
+            "chamber": "social",
+            "decision_date": "2017-11-08",
+            "language": "de",
+            "regeste": "Art. 28 IVG. Anspruch auf Invalidenrente. Die Arbeitsunfähigkeit muss durch ärztliche Gutachten objektiviert werden. Subjektive Beschwerden allein genügen nicht.",
+            "keywords": [
+                "Invalidenversicherung",
+                "Arbeitsunfähigkeit",
+                "Invalidenrente",
+                "Gutachten"
+            ],
+            "cited_laws": [
+                "IVG 28",
+                "IVG 29",
+                "ATSG 6"
+            ],
+            "bger_url": "https://www.bger.ch/ext/eurospider/live/de/php/clir/http/index.php?highlight_docid=atf%3A%2F%2F143-V-295"
+        },
+        {
+            "case_id": "4A_123/2022",
+            "title": "Kaufvertrag; Gewährleistung; Sachmangel",
+            "legal_area": "civil",
+            "chamber": "I_civil",
+            "decision_date": "2022-05-18",
+            "language": "de",
+            "regeste": "Art. 197 OR. Gewährleistung beim Kauf. Ein Sachmangel liegt vor, wenn die Kaufsache nicht die vereinbarten oder nach dem Vertragszweck vorausgesetzten Eigenschaften hat.",
+            "keywords": [
+                "Kaufrecht",
+                "Gewährleistung",
+                "Sachmangel",
+                "Wandelung"
+            ],
+            "cited_laws": [
+                "OR 197",
+                "OR 199",
+                "OR 205"
+            ],
+            "bger_url": null
+        },
+        {
+            "case_id": "2C_456/2021",
+            "title": "Steuerrecht; Einkommenssteuer; Berufskosten",
+            "legal_area": "tax",
+            "chamber": "II_public",
+            "decision_date": "2021-12-03",
+            "language": "de",
+            "regeste": "Art. 26 DBG. Abzug von Berufskosten. Fahrkosten zwischen Wohn- und Arbeitsort sind bis zu einem Höchstbetrag abzugsfähig, sofern die Nutzung öffentlicher Verkehrsmittel nicht zumutbar ist.",
+            "keywords": [
+                "Einkommenssteuer",
+                "Berufskosten",
+                "Fahrkosten",
+                "Abzüge"
+            ],
+            "cited_laws": [
+                "DBG 26",
+                "DBG 25"
+            ],
+            "bger_url": null
+        },
+        {
+            "case_id": "ATF 148 III 95",
+            "title": "Contrat de bail; résiliation; demeure du locataire",
+            "legal_area": "civil",
+            "chamber": "I_civil",
+            "decision_date": "2022-02-14",
+            "language": "fr",
+            "regeste": "Art. 257d CO. Résiliation du bail pour défaut de paiement. Le délai de grâce court dès la réception de la mise en demeure écrite.",
+            "keywords": [
+                "bail",
+                "résiliation",
+                "loyer",
+                "demeure"
+            ],
+            "cited_laws": [
+                "CO 257d",
+                "CO 266a"
+            ],
+            "bger_url": null
+        },
+        {
+            "case_id": "DTF 147 IV 73",
+            "title": "Diritto penale; lesioni personali; legittima difesa",
+            "legal_area": "criminal",
+            "chamber": "criminal",
+            "decision_date": "2021-01-20",
+            "language": "it",
+            "regeste": "Art. 15 e 16 CP. Legittima difesa. Chi si difende da un attacco illecito non è punibile se la difesa è proporzionata all'attacco.",
+            "keywords": [
+                "legittima difesa",
+                "lesioni",
+                "proporzionalità"
+            ],
+            "cited_laws": [
+                "CP 15",
+                "CP 16",
+                "CP 123"
+            ],
+            "bger_url": null
+        },
+        {
+            "case_id": "BGE 149 III 117",
+            "title": "Familienrecht; Scheidung; Unterhaltsbeiträge",
+            "legal_area": "civil",
+            "chamber": "II_civil",
+            "decision_date": "2023-04-11",
+            "language": "de",
+            "regeste": "Art. 125 ZGB. Nachehelicher Unterhalt. Bei der Festsetzung des nachehelichen Unterhalts ist auf die Dauer der Ehe, die während der Ehe gelebte Aufgabenteilung und die Einkommens- und Vermögensverhältnisse beider Ehegatten abzustellen.",
+            "keywords": [
+                "Scheidung",
+                "Unterhalt",
+                "Ehegattenunterhalt",
+                "nachehelicher Unterhalt"
+            ],
+            "cited_laws": [
+                "ZGB 125",
+                "ZGB 163",
+                "ZGB 176"
+            ],
+            "bger_url": null
+        }
+    ]
+}

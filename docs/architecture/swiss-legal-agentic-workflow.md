@@ -135,7 +135,6 @@ Be empathetic - users may be stressed about their legal situation.
 ```
 
 **Tools**:
-- `extract_entities` - NLP tool to extract dates, amounts, names, locations
 - `detect_language` - Identify user's language (DE/FR/IT/EN)
 
 ---
@@ -256,10 +255,8 @@ Prioritize:
 ```
 
 **Tools**:
-- `search_bge` - Search Federal Court decisions
-- `search_bvger` - Search Federal Administrative Court
+- `search_laws` - Search Swiss federal law databases
 - `semantic_case_search` - Vector similarity search for cases
-- `get_case_details` - Retrieve full case information
 
 ---
 
@@ -340,7 +337,6 @@ Be practical and specific to Swiss procedures.
 ```
 
 **Tools**:
-- `find_legal_resources` - Find lawyers, legal aid, ombudsman
 - `estimate_costs` - Estimate procedural costs
 
 ---
@@ -388,10 +384,6 @@ Include proper citations for verification.
 Add appropriate disclaimers about seeking professional advice.
 ```
 
-**Tools**:
-- `format_citations` - Format legal citations properly
-- `simplify_legal_language` - Convert legalese to plain language
-
 ---
 
 ### 9. Quality Assurance Agent
@@ -433,10 +425,6 @@ Review the synthesized response for:
 Return APPROVED or NEEDS_REVISION with specific feedback.
 ```
 
-**Tools**:
-- `verify_citations` - Check legal citations exist and are correct
-- `check_completeness` - Verify all components present
-
 ---
 
 ## Tools Inventory
@@ -445,20 +433,15 @@ Return APPROVED or NEEDS_REVISION with specific feedback.
 
 | Tool Name | Description | Data Source |
 |-----------|-------------|-------------|
-| `search_federal_laws` | Search Swiss federal law database | admin.ch / fedlex.admin.ch |
-| `search_cantonal_laws` | Search cantonal law databases | Cantonal legal portals |
-| `get_law_article` | Retrieve specific law article text | Fedlex API |
-| `search_bge` | Search Federal Court decisions | bger.ch / entscheidsuche.ch |
-| `search_bvger` | Search Federal Administrative Court | bvger.ch |
+| [`search_laws`](#search_laws-tool) | Search Swiss federal law databases | Law Article Agent | Fedlex API |
+
 | `semantic_case_search` | Vector similarity search for cases | Vector DB (custom) |
-| `get_case_details` | Retrieve full case information | Court APIs |
+
 
 ### Analysis Tools
 
 | Tool Name | Description | Implementation |
 |-----------|-------------|----------------|
-| `legal_domain_classifier` | ML model for legal domain classification | Custom ML model |
-| `extract_entities` | NLP entity extraction | spaCy / custom NER |
 | `analyze_legal_strength` | Assess case strength | LLM-based analysis |
 | `compare_to_precedents` | Compare with similar cases | Semantic similarity |
 
@@ -468,10 +451,6 @@ Return APPROVED or NEEDS_REVISION with specific feedback.
 |-----------|-------------|----------------|
 | `detect_language` | Identify user language (DE/FR/IT/EN) | langdetect / custom |
 | `estimate_costs` | Estimate procedural costs | Fee schedules |
-| `format_citations` | Format legal citations | Custom formatter |
-| `simplify_legal_language` | Convert to plain language | LLM-based |
-| `verify_citations` | Verify legal citations | Database lookup |
-| `find_legal_resources` | Find lawyers, legal aid | Directory APIs |
 
 ---
 

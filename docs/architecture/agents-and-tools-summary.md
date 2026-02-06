@@ -16,7 +16,7 @@
 
 ---
 
-## Tools Overview (7 total)
+## Tools Overview (6 total)
 
 ### Data Retrieval Tools (2)
 
@@ -25,11 +25,10 @@
 | [`search_laws`](#search_laws-tool) | Search Swiss federal law databases | Law Article Agent | Fedlex API |
 | `semantic_case_search` | Vector similarity search for cases | Case Law Agent | Vector DB |
 
-### Analysis Tools (3)
+### Analysis Tools (2)
 
 | Tool | Description | Used By | Implementation |
 |------|-------------|---------|----------------|
-| `extract_entities` | NLP entity extraction | Intake Agent | spaCy / custom NER |
 | `analyze_legal_strength` | Assess case strength | Outcome Prediction Agent | LLM-based |
 | `compare_to_precedents` | Compare with similar cases | Outcome Prediction Agent | Semantic similarity |
 
@@ -47,7 +46,7 @@
 | Agent | Tools |
 |-------|-------|
 | Orchestrator Agent | None (coordination only) |
-| Intake Agent | `extract_entities`, `detect_language` |
+| Intake Agent | `detect_language` |
 | Classifier Agent | None |
 | Law Article Agent | `search_laws` |
 | Case Law Agent | `semantic_case_search` |

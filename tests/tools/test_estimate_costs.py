@@ -98,7 +98,7 @@ class TestCostBreakdown:
             expert_fees=500,
             other_costs=200,
         )
-        # total_min = court_fees + attorney_fees_min + expert_fees + other_costs
+        # total_min = court_fees + attorney_fees_min + expert_fees + other_costs  # noqa: ERA001
         assert breakdown.total_min == 1000 + 2000 + 500 + 200
 
     def test_total_max_calculation(self) -> None:
@@ -110,7 +110,7 @@ class TestCostBreakdown:
             expert_fees=500,
             other_costs=200,
         )
-        # total_max = court_fees + attorney_fees_max + expert_fees + other_costs
+        # total_max = court_fees + attorney_fees_max + expert_fees + other_costs  # noqa: ERA001
         assert breakdown.total_max == 1000 + 5000 + 500 + 200
 
     def test_default_values(self) -> None:
