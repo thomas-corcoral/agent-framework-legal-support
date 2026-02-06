@@ -2,12 +2,12 @@
 # Usage: docker compose -f docker/docker-compose.yaml up
 
 services:
-  swiss-court-data-gen:
+  legal-support:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    image: swiss-court-data-gen:latest
-    container_name: swiss-court-data-gen
+    image: legal-support:latest
+    container_name: legal-support
     env_file:
       - ../.env
     volumes:
