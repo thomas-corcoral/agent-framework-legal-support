@@ -52,18 +52,18 @@ test:
 	uv run pytest tests/ -v
 
 test-cov:
-	uv run pytest tests/ --cov=src/swiss_court_data_gen --cov-report=html --cov-report=term-missing
+	uv run pytest tests/ --cov=src/legal_support --cov-report=html --cov-report=term-missing
 
 # Docker
 docker-build:
-	docker build -t swiss-court-data-gen:latest -f docker/Dockerfile .
+	docker build -t legal-support:latest -f docker/Dockerfile .
 
 docker-run:
 	docker run --rm -it \
 		-v $(PWD)/data:/app/data \
 		-v $(PWD)/output:/app/output \
 		--env-file .env \
-		swiss-court-data-gen:latest
+		legal-support:latest
 
 docker-compose-up:
 	docker compose -f docker/docker-compose.yaml up -d
@@ -93,4 +93,4 @@ ci-lint:
 	uv run ruff check src tests --output-format=github
 
 ci-test:
-	uv run pytest tests/ --cov=src/swiss_court_data_gen --cov-report=xml --junitxml=junit.xml
+	uv run pytest tests/ --cov=src/legal_support --cov-report=xml --junitxml=junit.xml
