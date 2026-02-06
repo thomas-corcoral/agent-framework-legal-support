@@ -1,4 +1,4 @@
-"""Tests for swiss_court_data_gen.synthetic_data_generation module."""
+"""Tests for legal_support.legal_agentic_support module."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ def test_main_prints_version() -> None:
         output = mock_stdout.getvalue()
 
     assert __version__ in output
-    assert "Swiss Court Data Generation" in output
+    assert "Swiss Legal support" in output
 
 
 def test_main_prints_hello_world() -> None:
@@ -40,7 +40,7 @@ def test_main_prints_coming_soon() -> None:
         main()
         output = mock_stdout.getvalue()
 
-    assert "Synthetic data generation implementation coming soon" in output
+    assert "coming soon" in output
 
 
 def test_module_can_be_imported() -> None:

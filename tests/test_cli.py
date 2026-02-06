@@ -22,7 +22,7 @@ def test_main_prints_version() -> None:
         output = mock_stdout.getvalue()
 
     assert __version__ in output
-    assert "Swiss Court Data Generation" in output
+    assert "Legal Swiss support" in output
 
 
 def test_main_prints_hello_world() -> None:
