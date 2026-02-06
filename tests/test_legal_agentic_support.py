@@ -5,7 +5,7 @@ from __future__ import annotations
 from io import StringIO
 from unittest.mock import patch
 
-from legal_support import __version__, legal_support
+from legal_support import __version__, legal_agentic_support
 from legal_support.legal_agentic_support import main
 
 
@@ -45,7 +45,7 @@ def test_main_prints_coming_soon() -> None:
 
 def test_module_can_be_imported() -> None:
     """Test that the synthetic_data_generation module can be imported."""
-    assert legal_support is not None
+    assert legal_agentic_support is not None
 
 
 def test_main_function_exists() -> None:
@@ -82,8 +82,8 @@ def test_main_version_line_format() -> None:
 
 def test_module_docstring_exists() -> None:
     """Test that the module has a docstring."""
-    assert legal_support.__doc__ is not None
-    assert len(legal_support.__doc__) > 0
+    assert legal_agentic_support.__doc__ is not None
+    assert len(legal_agentic_support.__doc__) > 0
 
 
 def test_main_docstring_exists() -> None:
