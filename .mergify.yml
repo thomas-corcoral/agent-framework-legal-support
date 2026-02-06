@@ -1,0 +1,79 @@
+# Mergify configuration
+# See: https://docs.mergify.com/configuration/file-format/
+
+pull_request_rules:
+  # Auto-merge Dependabot PRs when CI passes
+  - name: Automatic merge for Dependabot PRs (minor/patch)
+    conditions:
+      - author=dependabot[bot]
+      - check-success=Lint
+      - check-success=Type Check
+      - check-success=Test (Python 3.11)
+      - check-success=Test (Python 3.12)
+      - check-success=Test (Python 3.13)
+      - check-success=Test (Python 3.14)
+      - or:
+        - title~=^chore\(deps\)
+        - title~=^ci\(deps\)
+        - title~=^build\(deps\)
+    actions:
+      merge:
+        method: squash
+
+  # Auto-approve Dependabot PRs for minor/patch updates
+  - name: Auto-approve Dependabot minor/patch updates
+    conditions:
+      - author=dependabot[bot]
+      - or:
+        - title~=bump.*from.*to.*(patch|minor)
+        - title~=^chore\(deps\)
+        - title~=^ci\(deps\)
+    actions:
+      review:
+        type: APPROVE
+        message: Automatically approved by Mergify
+
+  # Label PRs based on files changed
+  - name: Label Python changes
+    conditions:
+      - files~=\.py$
+    actions:
+      label:
+        add:
+          - python
+
+  - name: Label documentation changes
+    conditions:
+      - or:
+        - files~=\.md$
+        - files~=docs/
+    actions:
+      label:
+        add:
+          - documentation
+
+  - name: Label CI changes
+    conditions:
+      - files~=\.github/workflows/
+    actions:
+      label:
+        add:
+          - github-actions
+
+  # Request review from maintainers for non-bot PRs
+  - name: Request review for human PRs
+    conditions:
+      - -author=dependabot[bot]
+      - -author=mergify[bot]
+      - -draft
+    actions:
+      request_reviews:
+        teams:
+          - maintainers
+
+  # Delete head branch after merge
+  - name: Delete head branch after merge
+    conditions:
+      - merged
+    actions:
+      delete_head_branch: {}

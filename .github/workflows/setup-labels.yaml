@@ -1,0 +1,53 @@
+name: Setup Labels
+
+on:
+  # Run manually or on repository creation
+  workflow_dispatch:
+  # Run once when pushed to main (then can be disabled)
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/setup-labels.yaml'
+
+permissions:
+  issues: write
+
+jobs:
+  create-labels:
+    name: Create Repository Labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = [
+              { name: 'dependencies', color: '0366d6', description: 'Pull requests that update a dependency file' },
+              { name: 'github-actions', color: '000000', description: 'Pull requests that update GitHub Actions code' },
+              { name: 'python', color: '3572A5', description: 'Pull requests that update Python code' },
+              { name: 'docker', color: '2496ED', description: 'Pull requests that update Docker configuration' },
+              { name: 'bug', color: 'd73a4a', description: 'Something is not working' },
+              { name: 'enhancement', color: 'a2eeef', description: 'New feature or request' },
+              { name: 'documentation', color: '0075ca', description: 'Improvements or additions to documentation' },
+              { name: 'good first issue', color: '7057ff', description: 'Good for newcomers' },
+              { name: 'help wanted', color: '008672', description: 'Extra attention is needed' },
+            ];
+
+            for (const label of labels) {
+              try {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label.name,
+                  color: label.color,
+                  description: label.description,
+                });
+                console.log(`Created label: ${label.name}`);
+              } catch (error) {
+                if (error.status === 422) {
+                  console.log(`Label already exists: ${label.name}`);
+                } else {
+                  console.error(`Failed to create label ${label.name}:`, error.message);
+                }
+              }
+            }
