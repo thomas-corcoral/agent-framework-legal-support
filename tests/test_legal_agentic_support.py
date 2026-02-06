@@ -6,7 +6,7 @@ from io import StringIO
 from unittest.mock import patch
 
 from legal_support import __version__, legal_support
-from legal_support.legal_support import main
+from legal_support.legal_agentic_support import main
 
 
 def test_main_runs_without_error() -> None:

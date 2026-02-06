@@ -61,7 +61,7 @@ USER appuser
 
 # Health check (optional - remove if not running as service)
 # HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-#     CMD python -c "import swiss_court_data_gen; print('OK')" || exit 1
+#     CMD python -c "import legal_support; print('OK')" || exit 1
 
 # Default command
-CMD ["python", "-m", "swiss_court_data_gen.synthetic_data_generation"]
+CMD ["python", "-m", "legal_support.legal_agentic_support"]
