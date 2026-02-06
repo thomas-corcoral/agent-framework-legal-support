@@ -4,7 +4,7 @@
 # =============================================================================
 # Builder stage: Install dependencies
 # =============================================================================
-FROM python:3.11-slim AS builder
+FROM python:3.14-slim AS builder
 
 # Install uv for dependency management
 RUN pip install --no-cache-dir uv
@@ -23,7 +23,7 @@ RUN uv sync --no-dev --no-install-project
 # =============================================================================
 # Final stage: Runtime image
 # =============================================================================
-FROM python:3.11-slim AS final
+FROM python:3.14-slim AS final
 
 # Security: Create non-root user
 ARG UID=10001
