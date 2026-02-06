@@ -1,0 +1,29 @@
+# Docker Compose for Swiss Federal Court Data Generation
+# Usage: docker compose -f docker/docker-compose.yaml up
+
+services:
+  swiss-court-data-gen:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: swiss-court-data-gen:latest
+    container_name: swiss-court-data-gen
+    env_file:
+      - ../.env
+    volumes:
+      - ../data:/app/data:ro
+      - ../output:/app/output:rw
+      - ../logs:/app/logs:rw
+    environment:
+      - LOG_LEVEL=INFO
+    # Resource limits (adjust as needed)
+    deploy:
+      resources:
+        limits:
+          cpus: "4"
+          memory: 8G
+        reservations:
+          cpus: "1"
+          memory: 2G
+    # Restart policy
+    restart: "no"

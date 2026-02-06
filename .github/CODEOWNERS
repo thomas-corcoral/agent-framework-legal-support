@@ -1,0 +1,18 @@
+# CODEOWNERS file for Swiss Federal Court Data Generation
+# These owners will be requested for review when someone opens a pull request.
+
+# Source code
+/src/ @thomas-corcoral
+
+# Tests
+/tests/ @thomas-corcoral
+
+# CI/CD configuration
+/.github/ @thomas-corcoral
+
+# Docker configuration
+/docker/ @thomas-corcoral
+
+# Documentation
+*.md @thomas-corcoral
+/docs/ @thomas-corcoral
