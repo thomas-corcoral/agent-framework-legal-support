@@ -54,7 +54,7 @@ dev = [
     "pytest-asyncio>=0.23.0",
     "ruff>=0.4.0",
     "mypy>=1.10.0",
-    "pre-commit>=3.7.0",
+    "pre-commit>=4.5.1",
     "pandas-stubs>=2.0.0",
 ]
 docs = [
@@ -83,7 +83,7 @@ dev-dependencies = [
     "pytest-asyncio>=0.23.0",
     "ruff>=0.4.0",
     "mypy>=1.10.0",
-    "pre-commit>=3.7.0",
+    "pre-commit>=4.5.1",
 ]
 
 [tool.ruff]
